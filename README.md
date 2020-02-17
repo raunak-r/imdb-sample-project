@@ -30,12 +30,11 @@ Via Anaconda Prompt:
 	> https://nodejs.org/en/download/
 
 	<!-- Check version using  -->
-	> node -v
-	v10.16.3
+	> node -v #v12.15.0
+	> npm -v #v6.13.4
 
-2. JS Framework (Angular)
-	> npm install -g @angular/cli
-	> > ng --version (TO VERIFY)
+2. React App
+	> npx create-react-app imdb	
 
 3. SETUP DEPENDENCY MANAGERS FOR PROJECT
 	> cd frontend

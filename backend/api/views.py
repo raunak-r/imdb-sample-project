@@ -23,9 +23,6 @@ class MovieViewSet(viewsets.ModelViewSet):
 		if 'stars' in request.data:
 			movie = Movie.objects.get(id=pk)
 			user = request.user
-			# print(user)
-			# print(movie.id)
-			# print(pk)
 			stars = request.data['stars']
 
 			try:
