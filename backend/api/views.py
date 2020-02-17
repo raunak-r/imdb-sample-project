@@ -1,30 +1,37 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.authentication import TokenAuthentication
 
 from django.contrib.auth.models import User
 from .models import Movie, Rating
 from .serializers import *
 
+class UserViewSet(viewsets.ModelViewSet):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
+
 class MovieViewSet(viewsets.ModelViewSet):
 	queryset = Movie.objects.all()
 	serializer_class = MovieSerializer
+	authentication_classes = (TokenAuthentication, )
 
 	@action(detail=True, methods=['POST'])
 	def rate_movie(self, request, pk=None):
-		# import pdb; pdb.set_trace();
 		if 'stars' in request.data:
 			movie = Movie.objects.get(id=pk)
-			# user = request.user
-			user = User.objects.get(id=1)
+			user = request.user
+			# print(user)
+			# print(movie.id)
+			# print(pk)
 			stars = request.data['stars']
 
-			try: # Update existing rating
+			try:
 				rating = Rating.objects.get(user=user.id, movie=movie.id)
 				rating.stars = stars
 				rating.save()
 			except:
-				Rating.objects.create(user=user, movie=movie, stars=stars)
+				rating = Rating.objects.create(user=user, movie=movie, stars=stars)
 
 			serializer = RatingSerializer(rating, many=False)
 			response = {
@@ -39,3 +46,4 @@ class MovieViewSet(viewsets.ModelViewSet):
 class RatingViewSet(viewsets.ModelViewSet):
 	queryset = Rating.objects.all()
 	serializer_class = RatingSerializer
+	authentication_classes = (TokenAuthentication, )

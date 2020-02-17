@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
 
 # Core Django URL's 
 urlpatterns = [
@@ -25,4 +26,5 @@ urlpatterns = [
 # App based URL's
 urlpatterns += [
 	path(r'api/', include('api.urls', namespace="api")),
+	path(r'auth/', obtain_auth_token),
 ]
