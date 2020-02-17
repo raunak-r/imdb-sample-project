@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.authtoken.models import Token
 
 from django.contrib.auth.models import User
 from .models import *
@@ -15,6 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
 		}
 	def create(self, validated_data):
 		user = User.objects.create_user(**validated_data)
+		token = Token.objects.create(user=user)
 		return user
 
 class MovieSerializer(serializers.ModelSerializer):

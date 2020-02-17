@@ -4,6 +4,7 @@
 ## Setting Up
 
 ## PostMan Link
+https://www.getpostman.com/collections/bc01658aa4971bde80ac
 
 ## DBDiagram Link
 
