@@ -1,7 +1,14 @@
 import React from 'react';
 
-function Header(){
-    return <h1>Header Text</h1>
+function Header(props){
+
+    return (
+        <React.Fragment>
+            <h1>
+                {props.title}
+            </h1>
+        </React.Fragment>
+    )
 }
 
 export default Header;

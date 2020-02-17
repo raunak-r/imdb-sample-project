@@ -4,22 +4,26 @@ import './App.css';
 import Header from './components/header';
 import Footer from './components/footer';
 
+function demoAlert(){
+  alert('Demo Alert! Click Found!');
+}
+
 function OurText(){
-	return <p>This is text</p>
+	return <p>Filler content</p>
 }
 
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <p>
-          Learn React
-        </p>
-        <OurText/>
-      </header> */}
-      <Header />
+      <Header
+        title='IMDB Sample Project'
+      />
       <OurText />
-      <Footer />
+      <Footer 
+        trademark='Learned from Udemy'
+        author='Raunak'
+        myalert={demoAlert}
+      />
     </div>
   );
 }
