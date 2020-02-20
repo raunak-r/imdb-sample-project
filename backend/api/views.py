@@ -51,12 +51,12 @@ class RatingViewSet(viewsets.ModelViewSet):
 	# Example to override built-in classes of ModelViewSet
 	def update(self, request, *args, **kwargs):
 		response = {
-			'message' : 'Can\'t update',
+			'message' : 'Can\'t update rating',
 		}
 		return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 	def create(self, request, *args, **kwargs):
 		response = {
-			'message' : 'Can\'t create',
+			'message' : 'Can\'t create rating',
 		}
 		return Response(response, status=status.HTTP_400_BAD_REQUEST)
