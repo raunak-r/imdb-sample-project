@@ -10,9 +10,14 @@ class App extends Component {
     selectedMovie: null,
   }
 
-  movieClicked = movie => {
+  loadMovie = movie => {
     console.log(movie);
     this.setState({selectedMovie: movie})
+  }
+  
+  movieDeleted = selectedMovie => {
+    const movie = this.state.movies.filter(movie => movie.id !== selectedMovie.id);
+    
   }
 
   componentDidMount(){
@@ -34,8 +39,11 @@ class App extends Component {
 
           <div className="layout">
             <MovieList movies = {this.state.movies}
-              movieClicked={this.movieClicked}/>
-            <MovieDetails movie={this.state.selectedMovie}/>
+              movieClicked={this.loadMovie}
+              movieDeleted={this.movieDeleted} />
+
+            <MovieDetails movie={this.state.selectedMovie}
+              updateMovie={this.loadMovie}/>
           </div>
           
       </div>
