@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-// var FontAwesome = require('react-fontawesome');
-
 class MovieForm extends Component{
 
     state = {
@@ -63,7 +61,7 @@ class MovieForm extends Component{
                     ? <button disable={isDisabled} onClick={this.updateClicked}>Update</button>
                     : <button disable={isDisabled} onClick={this.saveClicked}>Save</button>
                 }
-
+                &nbsp;
                 <button onClick={this.cancelClicked}>Cancel</button>
             </React.Fragment>
         )
