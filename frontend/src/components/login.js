@@ -6,7 +6,8 @@ class Login extends Component{
         credentials: {
             username: '',
             password: '',
-        }
+        },
+        isLoginView: true,
     }
 
     inputChanged = event => {
@@ -16,26 +17,49 @@ class Login extends Component{
     }
 
     login = event => {
+        if(this.state.isLoginView) {
+            fetch(`${process.env.REACT_APP_API_URL}/auth/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(this.state.credentials)
+                }).then( resp => resp.json())
+                .then( res => {
+                    console.log(res);
+                    this.props.cookies.set('loginToken', res.token);
+                    window.location.href = "/movies";
+                })
+                .catch( error => console.log(error))
+        }
+        else {
+            fetch(`${process.env.REACT_APP_API_URL}/api/users/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(this.state.credentials)
+                }).then( resp => resp.json())
+                .then( res => {
+                    this.setState({isLoginView: true});
+                })
+                .catch( error => console.log(error))
+        }
         console.log(this.state.credentials);
-        fetch(`${process.env.REACT_APP_API_URL}/auth/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(this.state.credentials)
-            }).then( resp => resp.json())
-            .then( res => {
-                console.log(res);
-                this.props.cookies.set('loginToken', res.token);
-                window.location.href = "/movies";
-            })
-            .catch( error => console.log(error))
+        
+    }
+
+    toggleView = () => {
+        this.setState({isLoginView: !this.state.isLoginView});
     }
 
     render(){
         return (
             <div className="login-container">
-                <h1>Login</h1>
+                <h1>
+                    { this.state.isLoginView
+                    ? 'Login' : 'Register'}
+                </h1>
                 
                 <span>Username</span><br/>
                 <input type="text" name="username" 
@@ -46,7 +70,14 @@ class Login extends Component{
                 <input type="text" name="password" 
                         value={this.state.credentials.password} 
                         onChange={this.inputChanged} /><br/>
-                <button onClick={this.login}>Login</button>
+                <button onClick={this.login}>
+                    {this.state.isLoginView
+                    ? 'Login' : 'Register'}
+                </button>
+                <p onClick={this.toggleView}>
+                    {this.state.isLoginView
+                    ? 'Create Account' : 'Login'}
+                </p>
             </div>
         )
         
