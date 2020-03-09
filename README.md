@@ -1,13 +1,11 @@
 ### Expected Workflow
 
-
 ## Setting Up
 
 ## PostMan Link
 https://www.getpostman.com/collections/bc01658aa4971bde80ac
 
 ## DBDiagram Link
-
 
 ### Backend-Dependencies
 ```
@@ -51,6 +49,19 @@ Via Anaconda Prompt:
 <!-- Other Commands -->
 ng generate component dashboard
 ```	
+
+### React-Native Dependencies
+```
+Choose 1 of the 3:
+1. Snack.expo.io - to directly write code on browser and compile.
+2. React-Native CLI Support(Using Android Studio) - Get React Native Support and build on it.
+3. React-Native Expo - A set of tools to work on, requires a phone/emulator.
+
+> npm install -g expo-cli
+> expo init project-name
+> npm start
+
+```
 
 ## Design - API
 
