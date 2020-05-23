@@ -13,7 +13,6 @@ Via Anaconda Prompt:
 	> virtualenv . (Requires Python 3)
 	> .\Scripts\activate
 
-	> Inside Master folder
 	> pip install -r requirements.txt
 	> python backend\manage.py runserver
 
@@ -43,7 +42,7 @@ Via Anaconda Prompt:
 
 4. RUNNING THE FRONTEND
 	> Open a new terminal
-	> cd speech-recognizer\Master\frontend>
+	> cd imdb-sample-project\frontend>
 	> npm start
 
 <!-- Other Commands -->
@@ -70,4 +69,4 @@ Choose 1 of the 3:
 ### policyEngine
 
 ### References:
-https://***.udemy.com/course/react-django-full-stack/learn/lecture/14268834#content
+https://.udemy.com/course/react-django-full-stack/
